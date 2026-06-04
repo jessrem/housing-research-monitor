@@ -121,6 +121,12 @@
 <body>
 
 <div class="banner">
+<div style="text-align:right; padding: 0 0 12px; font-size:13px;">
+  <a href="archive.html" style="color:rgba(255,255,255,0.8); text-decoration:none; 
+     border:1px solid rgba(255,255,255,0.3); padding:4px 12px; border-radius:6px;">
+    📁 Archive
+  </a>
+</div>
   <div class="kicker">Housing Monitor</div>
   <h1>Housing Research, Writing &amp; Legislation</h1>
   <div class="sub">Generated Monday, June 1, 2026</div>
