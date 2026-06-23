@@ -3,137 +3,94 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Housing Research Monitor — 2026-06-02</title>
+<title>Housing Research Monitor — 2026-06-23</title>
 <style>
   :root{
-    /* EIG 2022 primary palette */
-    --eig-teal:#024140;     /* primary dark brand */
-    --eig-green700:#19644D; /* secondary dark green */
-    --eig-green500:#5E9C86; /* mid green */
-    --eig-blue:#194F8B;     /* emphasis blue (links) */
-    --eig-blue200:#B3D6DD;  /* light blue tint */
-    --eig-cream:#FEECD6;    /* warm neutral */
-    --eig-purple:#39274F;   /* accent */
-    --eig-gold:#E1AD28;     /* accent gold */
-    --eig-cyan:#176F96;     /* accent */
-    --eig-tan:#D6936F;      /* accent */
-    --ink:#1a1c1b; --muted:#5b6660; --line:#e3e6e4; --bg:#f5f6f5; --card:#ffffff;
-    --headline:"Source Serif Pro","Source Serif 4",Georgia,"Times New Roman",serif;
-    --body:"Open Sans",Arial,"Helvetica Neue",Helvetica,sans-serif;
+    --ink:#23272e; --muted:#6b7280; --line:#e6e8ec; --bg:#f4f5f7; --card:#ffffff;
+    --green:#1f4a3f; --green-dark:#163a31;
+    --gold:#b88a2e; --gold-soft:#f3e6c4; --gold-line:#dcc176;
+    --hi:#fdf6e3; --hi-border:#e3c878; --accent:#1f5fab;
+    --st-enacted:#1f9254; --st-enacted-bg:#e4f5ec;
+    --st-passed:#1f5fab; --st-passed-bg:#e6effb;
+    --st-committee:#b7791f; --st-committee-bg:#fdf3df;
+    --st-introduced:#5c6470; --st-introduced-bg:#eceef1;
+    --st-proposal:#6b3fa0; --st-proposal-bg:#f0e9f8;
   }
   *{box-sizing:border-box;}
-  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);
-    line-height:1.58;font-size:16px;-webkit-font-smoothing:antialiased;}
-  a{color:var(--eig-blue);}
-
-  /* Banner */
-  .banner{background:linear-gradient(135deg,var(--eig-teal) 0%,#01302f 60%,var(--eig-green700) 100%);
-    color:#fff;padding:40px 24px 44px;text-align:center;}
-  .banner .logo{width:132px;height:auto;margin:0 auto 18px;display:block;}
-  .banner .kicker{font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:.24em;
-    text-transform:uppercase;color:var(--eig-gold);margin-bottom:12px;}
-  .banner h1{font-family:var(--headline);font-size:31px;margin:0;font-weight:600;letter-spacing:-0.2px;}
-  .banner .sub{margin-top:13px;font-size:13.5px;color:rgba(255,255,255,.82);}
-
-  .wrap{max-width:780px;margin:0 auto;padding:0 24px 90px;}
-
-  nav.toc{background:var(--card);border:1px solid var(--line);border-radius:8px;
-    padding:16px 20px;margin:-24px 0 8px;position:relative;box-shadow:0 2px 12px rgba(2,65,64,.08);}
-  nav.toc strong{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.16em;
-    color:var(--muted);margin-bottom:9px;}
-  nav.toc a{display:inline-block;margin:3px 16px 3px 0;color:var(--eig-blue);text-decoration:none;font-size:13.5px;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.55;font-size:16px;}
+  .banner{background:linear-gradient(135deg,var(--green) 0%,var(--green-dark) 100%);
+    color:#fff;text-align:center;padding:42px 24px 48px;}
+  .banner .kicker{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+    color:rgba(255,255,255,.7);margin-bottom:14px;}
+  .banner h1{font-size:30px;margin:0;font-weight:750;letter-spacing:-0.3px;}
+  .banner .sub{margin-top:14px;font-size:13.5px;color:rgba(255,255,255,.78);}
+  .wrap{max-width:760px;margin:0 auto;padding:0 24px 90px;}
+  nav.toc{background:var(--card);border:1px solid var(--line);border-radius:10px;
+    padding:16px 20px;margin:-26px 0 8px;position:relative;box-shadow:0 2px 10px rgba(20,40,35,.05);}
+  nav.toc strong{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);margin-bottom:9px;}
+  nav.toc a{display:inline-block;margin:3px 16px 3px 0;color:var(--accent);text-decoration:none;font-size:13.5px;}
   nav.toc a:hover{text-decoration:underline;}
-
-  section{margin-top:48px;}
-  .sec-kicker{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
-    color:var(--eig-gold);margin-bottom:4px;}
-  h2.section{font-family:var(--headline);font-size:27px;letter-spacing:-0.2px;margin:0 0 4px;
-    font-weight:600;color:var(--eig-teal);}
-  .section-rule{height:2px;background:linear-gradient(90deg,var(--eig-gold),transparent);margin:9px 0 20px;border:0;}
-  .section-note{color:var(--muted);font-size:13px;margin:-10px 0 18px;}
-
-  h3.cat{font-family:var(--body);font-size:13px;margin:26px 0 11px;color:var(--eig-green700);
-    font-weight:700;text-transform:uppercase;letter-spacing:.08em;}
+  section{margin-top:46px;}
+  .sec-kicker{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;}
+  h2.section{font-size:26px;letter-spacing:-0.3px;margin:0 0 4px;font-weight:730;}
+  .section-rule{height:2px;background:linear-gradient(90deg,var(--gold-line),transparent);margin:8px 0 18px;border:0;}
+  .section-note{color:var(--muted);font-size:13px;margin:-8px 0 18px;}
+  h3.cat{font-size:14px;margin:26px 0 11px;color:var(--green);font-weight:700;text-transform:uppercase;letter-spacing:.07em;}
   h3.cat .hint{text-transform:none;font-weight:600;color:var(--muted);font-size:12px;}
-  .thin{font-size:13px;color:var(--muted);font-style:italic;margin:0 0 10px;}
-
-  .item{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px 18px;
-    margin:0 0 13px;border-left:4px solid var(--eig-gold);box-shadow:0 1px 4px rgba(2,65,64,.05);}
-  .item .title{font-family:var(--headline);font-size:17px;font-weight:600;line-height:1.34;}
+  .card,.item{background:var(--card);border:1px solid var(--line);border-radius:10px;
+    padding:16px 18px;margin:0 0 13px;border-left:4px solid var(--gold-line);box-shadow:0 1px 4px rgba(20,40,35,.04);}
+  .item .title{font-size:16px;font-weight:680;line-height:1.35;}
   .item .title a{color:var(--ink);text-decoration:none;}
-  .item .title a:hover{color:var(--eig-blue);text-decoration:underline;}
+  .item .title a:hover{color:var(--accent);text-decoration:underline;}
   .item .meta{color:var(--muted);font-size:12.5px;margin:4px 0 9px;}
-  .item .why{font-size:14.5px;}
-  .item .why b.lab{color:var(--eig-green700);}
-  .item .cite{display:block;margin-top:9px;padding-top:8px;border-top:1px dotted var(--line);
-    font-size:12px;color:var(--muted);}
-  .item .cite a{color:var(--eig-blue);text-decoration:none;}
-  .item .cite a:hover{text-decoration:underline;}
+  .item .why{font-size:14px;}
+  .item .why b.lab{color:var(--green);}
+  .cite{display:block;margin-top:8px;font-size:12px;color:var(--gold);font-weight:600;}
   .cred{display:block;margin-top:6px;font-size:12.5px;color:var(--muted);font-style:italic;}
-
-  .top5 .item{display:flex;gap:14px;align-items:flex-start;border-left-color:var(--eig-teal);}
-  .num{flex:0 0 27px;width:27px;height:27px;border-radius:50%;background:var(--eig-gold);
-    color:var(--eig-teal);font-size:13px;font-weight:800;display:flex;align-items:center;
-    justify-content:center;margin-top:2px;font-family:var(--body);}
+  .none{background:#fbfbfc;border:1px dashed var(--line);border-left:4px solid var(--line);
+    border-radius:10px;padding:13px 16px;color:var(--muted);font-size:13.5px;margin-bottom:13px;}
+  .top5 .item{display:flex;gap:14px;align-items:flex-start;}
+  .num{flex:0 0 26px;width:26px;height:26px;border-radius:50%;background:var(--gold);color:#fff;
+    font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:2px;}
   .top5 .body{flex:1;}
-
-  .potw{background:var(--eig-cream);border:1px solid #f0cf9e;border-left:5px solid var(--eig-gold);
-    border-radius:8px;padding:22px 24px;box-shadow:0 1px 6px rgba(225,173,40,.12);}
-  .potw .kicker{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.1em;
-    text-transform:uppercase;color:#8a6410;background:#f7dca6;padding:3px 10px;border-radius:5px;}
-  .potw .title{font-family:var(--headline);font-size:20px;font-weight:600;line-height:1.3;margin:12px 0 4px;}
-  .potw .title a{color:var(--eig-teal);text-decoration:none;}
-  .potw .title a:hover{text-decoration:underline;}
-  .potw .meta{color:#7a6630;font-size:13px;margin-bottom:10px;}
-  .potw .why{font-size:14.5px;color:#3d3522;}
-  .potw .cite{display:block;margin-top:11px;padding-top:9px;border-top:1px dotted #e6c9a0;
-    font-size:12px;color:#7a6630;}
-  .potw .cite a{color:#8a6410;}
-
-  /* Legislation */
-  .leg-card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px 18px;
-    margin-bottom:13px;border-left:4px solid var(--eig-green500);box-shadow:0 1px 4px rgba(2,65,64,.05);}
+  .potw{background:var(--hi);border:1px solid var(--hi-border);border-left:5px solid var(--gold-line);
+    border-radius:10px;padding:20px 24px;box-shadow:0 1px 6px rgba(120,90,20,.07);}
+  .potw .kicker{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--gold);background:var(--gold-soft);padding:3px 9px;border-radius:6px;}
+  .potw .title{font-size:18px;font-weight:720;line-height:1.3;margin:11px 0 4px;}
+  .potw .why{font-size:14px;}
+  .leg-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;
+    margin-bottom:13px;border-left:4px solid var(--gold-line);box-shadow:0 1px 4px rgba(20,40,35,.04);}
   .leg-card .lvl{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);}
-  .leg-card .bill{font-family:var(--headline);font-size:16px;font-weight:600;margin:3px 0 2px;}
+  .leg-card .bill{font-size:15.5px;font-weight:680;margin:3px 0 2px;}
   .leg-card .bill a{color:var(--ink);text-decoration:none;}
-  .leg-card .bill a:hover{color:var(--eig-blue);text-decoration:underline;}
+  .leg-card .bill a:hover{color:var(--accent);text-decoration:underline;}
   .leg-card .plain{font-size:13px;color:var(--muted);margin-bottom:10px;}
-  .badge{display:inline-block;font-size:10.5px;font-weight:700;padding:3px 11px;border-radius:20px;
-    text-transform:uppercase;letter-spacing:.04em;margin-bottom:10px;color:#fff;}
-  .b-enacted{background:var(--eig-green700);}
-  .b-passed{background:var(--eig-blue);}
-  .b-introduced{background:var(--muted);}
-  .b-proposal{background:var(--eig-purple);}
+  .badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 11px;border-radius:20px;
+    text-transform:uppercase;letter-spacing:.04em;margin-bottom:10px;}
+  .b-enacted{background:var(--st-enacted-bg);color:var(--st-enacted);}
+  .b-passed{background:var(--st-passed-bg);color:var(--st-passed);}
+  .b-committee{background:var(--st-committee-bg);color:var(--st-committee);}
+  .b-introduced{background:var(--st-introduced-bg);color:var(--st-introduced);}
+  .b-proposal{background:var(--st-proposal-bg);color:var(--st-proposal);}
   .leg-card .field{font-size:13.5px;margin:5px 0;}
   .leg-card .field b{color:var(--ink);}
-  .leg-card a.src{font-size:12.5px;color:var(--eig-blue);text-decoration:none;}
+  .leg-card a.src{font-size:12.5px;color:var(--accent);text-decoration:none;}
   .leg-card a.src:hover{text-decoration:underline;}
   .legend{font-size:12px;color:var(--muted);margin:0 0 16px;}
   .legend span{margin-right:10px;display:inline-block;margin-bottom:5px;}
-
-  /* Evidence */
-  .evidence{background:#eef2f0;border:1px solid var(--line);border-left:4px solid var(--eig-teal);
-    border-radius:8px;padding:18px 22px;font-size:13.5px;}
-  .evidence h3{font-family:var(--headline);color:var(--eig-teal);margin:0 0 8px;font-size:18px;font-weight:600;}
-  .evidence b{color:var(--eig-green700);}
-  .evidence ul{margin:6px 0 12px;padding-left:20px;}
-  .evidence li{margin-bottom:5px;}
-
-  footer{margin-top:54px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:12px;}
+  footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;}
+  a{color:var(--accent);}
 </style>
 </head>
 <body>
 
- <div class="banner">
-   <div style="text-align:right; padding: 0 0 12px; font-size:13px;">
-  <a href="archive.html" style="color:rgba(255,255,255,0.8); text-decoration:none; 
-     border:1px solid rgba(255,255,255,0.3); padding:4px 12px; border-radius:6px;">
-    📁 Archive
-  </a>
-</div>
-  <div class="kicker">Housing Research Monitor</div>
+<div class="banner">
+  <div class="kicker">Housing Monitor</div>
   <h1>Housing Research, Writing &amp; Legislation</h1>
-  <div class="sub">Generated Tuesday, June 2, 2026 · Rolling 12-month window · New items only</div>
+  <div class="sub">Generated Tuesday, June 23, 2026</div>
 </div>
 
 <div class="wrap">
@@ -146,7 +103,6 @@
     <a href="#blogs">Urbanist Blogs</a>
     <a href="#legislation">Legislation Tracker</a>
     <a href="#datasets">Housing Datasets</a>
-    <a href="#evidence">Evidence</a>
   </nav>
 
   <!-- TOP 5 -->
@@ -156,29 +112,29 @@
     <hr class="section-rule">
     <div class="top5">
       <div class="item"><div class="num">1</div><div class="body">
-        <div class="title"><a href="https://www.bostonfed.org/publications/research-department-working-paper/2026/the-effect-of-land-supply-for-new-homes.aspx" target="_blank" rel="noopener">It may be fragmented land, not just zoning, choking supply</a></div>
-        <div class="meta">Boston Fed · May 28, 2026 · Research (Paper of the Week)</div>
-        <div class="why"><b class="lab">Why it's interesting:</b> Recombining small, scattered buildable parcels into larger ones — holding total acreage fixed — would raise construction productivity, lift supply, and slow price growth. A physical constraint that complements the regulatory story.</div>
+        <div class="title"><a href="https://www.brookings.edu/articles/the-ripple-effects-of-banning-institutional-purchases-of-single-family-rentals/" target="_blank" rel="noopener">Banning institutional landlords could raise rents</a></div>
+        <div class="meta">Brookings · 2026 · Research (Finance)</div>
+        <div class="why"><b class="lab">Why it's interesting:</b> Institutional investors pushed up prices where they clustered — but also <em>lowered rents</em>. A federal ban like the ROAD Act's could backfire on the renters it aims to help.</div>
       </div></div>
       <div class="item"><div class="num">2</div><div class="body">
-        <div class="title"><a href="https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB79" target="_blank" rel="noopener">California signs SB 79 — statewide transit upzoning</a></div>
-        <div class="meta">CA Legislature · signed Oct 2025, effective Jul 2026 · Legislation</div>
-        <div class="why"><b class="lab">Why it's interesting:</b> The state's most significant statewide upzoning in years makes higher-density housing an allowed use near qualifying transit — a major by-right expansion to watch as it activates.</div>
+        <div class="title"><a href="https://www.tandfonline.com/doi/full/10.1080/07352166.2026.2628685" target="_blank" rel="noopener">"Build baby build" — but the rent effect depends on the submarket</a></div>
+        <div class="meta">Journal of Urban Affairs · 2026 · Research (Prices &amp; Rents)</div>
+        <div class="why"><b class="lab">Why it's interesting:</b> New large market-rate buildings move nearby rents, but the size and direction vary by the quality of surrounding housing — a needed nuance to the blanket "supply lowers rents" claim.</div>
       </div></div>
       <div class="item"><div class="num">3</div><div class="body">
-        <div class="title"><a href="https://capitol.texas.gov/BillLookup/History.aspx?LegSess=89R&Bill=SB840" target="_blank" rel="noopener">Texas legalizes by-right apartments on commercial land</a></div>
-        <div class="meta">TX Legislature · enacted, effective Sept 2025 · Legislation</div>
-        <div class="why"><b class="lab">Why it's interesting:</b> SB 840 lets multifamily rise by right on commercial/office/retail land in big Texas cities — no rezoning or hearings — a live, large-scale test of the by-right model.</div>
+        <div class="title"><a href="https://www.pew.org/en/research-and-analysis/reports/2026/05/preapproved-building-plans-help-cities-improve-housing-affordability" target="_blank" rel="noopener">Preapproved building plans cut permitting time and cost</a></div>
+        <div class="meta">Pew · May 2026 · Research (By-Right &amp; Permitting)</div>
+        <div class="why"><b class="lab">Why it's interesting:</b> 61% of cities using preapproved plans shaved more than a month off permitting, with $10k+/unit savings — a low-conflict by-right lever that speeds infill without rezoning fights.</div>
       </div></div>
       <div class="item"><div class="num">4</div><div class="body">
-        <div class="title"><a href="https://www.texaspolicy.com/wp-content/uploads/2025/01/2025-01-TPP-Minimum-Lot-Size-Reform-Bonura_FINAL.pdf" target="_blank" rel="noopener">Cutting minimum lot sizes unlocked thousands of starter homes</a></div>
-        <div class="meta">Texas Public Policy Foundation · Jan 2025 · Research (Zoning)</div>
-        <div class="why"><b class="lab">Why it's interesting:</b> Houston's reduction of minimum lot sizes to ~1,400 sq ft catalyzed thousands of infill townhomes — concrete evidence that lot-size reform, not just upzoning, moves starter-home production.</div>
+        <div class="title"><a href="https://www.mass.gov/news/accessory-dwelling-units-officially-allowed-statewide" target="_blank" rel="noopener">Massachusetts makes ADUs legal by right statewide</a></div>
+        <div class="meta">Commonwealth of Massachusetts · effective Feb 2025 · Legislation</div>
+        <div class="why"><b class="lab">Why it's interesting:</b> The Affordable Homes Act lets ADUs up to 900 sq ft go up by right in single-family zones in every community — the Northeast's most sweeping ADU reform and a statewide by-right template.</div>
       </div></div>
       <div class="item"><div class="num">5</div><div class="body">
-        <div class="title"><a href="https://www.levyinstitute.org/publications/a-premium-crisis-climate-change-threatens-homeowners-insurance-housing-and-financial-stability/" target="_blank" rel="noopener">Home insurance is now a top affordability threat</a></div>
-        <div class="meta">Levy Economics Institute · 2025 · Research (Finance)</div>
-        <div class="why"><b class="lab">Why it's interesting:</b> Insurance now runs about 9% of the typical monthly housing payment — a record — and is increasingly killing transactions. Climate-driven premium growth is reframed as a first-order affordability problem.</div>
+        <div class="title"><a href="https://www.huduser.gov/portal/pdredge/pdr-edge-trending-010826.html" target="_blank" rel="noopener">Do ADU reforms work in smaller cities?</a></div>
+        <div class="meta">HUD PD&amp;R · Jan 2026 · Research (Zoning)</div>
+        <div class="why"><b class="lab">Why it's interesting:</b> Most ADU evidence comes from big coastal metros; this HUD work tests whether legalization actually produces units in the small- and mid-sized cities where most Americans live.</div>
       </div></div>
     </div>
   </section>
@@ -189,11 +145,9 @@
     <h2 class="section">Paper of the Week</h2>
     <hr class="section-rule">
     <div class="potw">
-      <span class="kicker">★ Paper of the Week · published May 28, 2026</span>
-      <div class="title"><a href="https://www.bostonfed.org/publications/research-department-working-paper/2026/the-effect-of-land-supply-for-new-homes.aspx" target="_blank" rel="noopener">The Effect of Land Supply for New Homes on Residential Investment and House Prices</a></div>
-      <div class="meta">Justin Katz &amp; Paul S. Willen · Federal Reserve Bank of Boston Working Paper No. 26-7</div>
-      <div class="why"><b style="color:var(--eig-green700)">Why it's interesting:</b> A complement to the dominant "blame regulation" story: using parcel-level data for New England (2007–2021), the authors show that <em>physical land fragmentation</em> independently constrains housing supply. Most buildable parcels are small and hemmed in by developed land; large parcels have grown scarcer, especially in populous, growing markets — and those markets see faster price growth and weaker development. Counterfactuals suggest recombining fragmented parcels into larger lots, holding total acreage fixed, would raise construction productivity, increase supply, and slow price growth. The policy implication is pointed: redeveloping large under-used government/commercial/industrial sites may beat scattered infill per acre.</div>
-      <span class="cite">Katz, Justin, and Paul S. Willen, <a href="https://www.bostonfed.org/publications/research-department-working-paper/2026/the-effect-of-land-supply-for-new-homes.aspx" target="_blank" rel="noopener"><em>The Effect of Land Supply for New Homes on Residential Investment and House Prices</em></a>, Federal Reserve Bank of Boston Research Department Working Paper No. 26-7, May 2026.</span>
+      <span class="kicker">No qualifying paper this week</span>
+      <div class="title">No new standout in the trailing 7 days</div>
+      <div class="why">Nothing published in the seven days to June 23 clears the bar on a combination of citation signal and importance for housing. Rather than force a weak pick, this slot is intentionally empty. The strongest fresh work this run sits in the Research Roundup below — led by the Brookings finding on institutional landlords and the <em>Journal of Urban Affairs</em> submarket study of new construction and rents.</div>
     </div>
   </section>
 
@@ -202,51 +156,43 @@
     <div class="sec-kicker">Academic &amp; think tank</div>
     <h2 class="section">Research Roundup</h2>
     <hr class="section-rule">
-    <div class="section-note">Rolling 12-month window, new items only (none repeated from prior editions). Zoning &amp; land-use leads per standing emphasis.</div>
+    <div class="section-note">Rolling 12-month window, new items only (strict no-reuse vs the archive). Zoning &amp; land-use leads per standing emphasis.</div>
 
     <h3 class="cat">Zoning &amp; Land-Use Reform <span class="hint">— highest emphasis</span></h3>
     <div class="item">
-      <div class="title"><a href="https://www.texaspolicy.com/wp-content/uploads/2025/01/2025-01-TPP-Minimum-Lot-Size-Reform-Bonura_FINAL.pdf" target="_blank" rel="noopener">Minimum Lot Size Reform</a></div>
-      <div class="meta">Texas Public Policy Foundation · January 2025</div>
-      <div class="why"><b class="lab">Why it's interesting:</b> Houston's cut of minimum lot sizes (~5,000 → 1,400 sq ft inside Loop 610) catalyzed thousands of infill townhomes — a clean demonstration that lot-size reform, distinct from upzoning, unlocks starter-home production.</div>
-      <span class="cite">Texas Public Policy Foundation, <a href="https://www.texaspolicy.com/wp-content/uploads/2025/01/2025-01-TPP-Minimum-Lot-Size-Reform-Bonura_FINAL.pdf" target="_blank" rel="noopener"><em>Minimum Lot Size Reform</em></a>, January 2025.</span>
-    </div>
-    <div class="item">
-      <div class="title"><a href="https://pioneerinstitute.org/new-study-calls-for-reducing-or-eliminating-parking-requirements-for-new-housing/" target="_blank" rel="noopener">Reducing or Eliminating Parking Requirements for New Housing</a></div>
-      <div class="meta">Pioneer Institute · 2025</div>
-      <div class="why"><b class="lab">Why it's interesting:</b> Parking minimums are among the most binding land-use constraints on achievable density; the study finds removing them materially expands feasible housing sites and cuts per-unit costs (structured parking runs roughly $34k–$59k per space above ground).</div>
-      <span class="cite">Pioneer Institute, <a href="https://pioneerinstitute.org/new-study-calls-for-reducing-or-eliminating-parking-requirements-for-new-housing/" target="_blank" rel="noopener">"New Study Calls for Reducing or Eliminating Parking Requirements for New Housing,"</a> 2025.</span>
+      <div class="title"><a href="https://www.huduser.gov/portal/pdredge/pdr-edge-trending-010826.html" target="_blank" rel="noopener">Evaluating Accessory Dwelling Units in Small- to Medium-Sized Cities</a></div>
+      <div class="meta">HUD PD&amp;R (PD&amp;R Edge) · Jan 2026</div>
+      <div class="why"><b class="lab">Why it's interesting:</b> Tests whether ADU legalization actually yields units outside big coastal markets, using parcel-level field surveys in smaller cities — exactly where ADU reform is least studied and most of the country lives.</div>
     </div>
 
     <h3 class="cat">Prices &amp; Rents</h3>
-    <p class="thin">This week's standout prices-and-supply paper is featured above as the Paper of the Week (Boston Fed). No additional new prices-specific item cleared the quality bar this run.</p>
-
-    <h3 class="cat">Construction</h3>
     <div class="item">
-      <div class="title"><a href="https://www.brookings.edu/articles/recent-tariffs-threaten-residential-construction/" target="_blank" rel="noopener">Recent Tariffs Threaten Residential Construction</a></div>
-      <div class="meta">Brookings Institution · 2026</div>
-      <div class="why"><b class="lab">Why it's interesting:</b> Quantifies how 2025–26 tariffs on lumber, steel, copper, and aluminum raise per-home costs and could mean roughly 450,000 fewer homes built through 2030 — a fresh supply headwind stacked on top of regulatory constraints.</div>
-      <span class="cite">Brookings Institution, <a href="https://www.brookings.edu/articles/recent-tariffs-threaten-residential-construction/" target="_blank" rel="noopener">"Recent Tariffs Threaten Residential Construction,"</a> 2026.</span>
+      <div class="title"><a href="https://www.tandfonline.com/doi/full/10.1080/07352166.2026.2628685" target="_blank" rel="noopener">Build Baby Build? Housing Submarkets and the Effects of New Construction on Existing Rents</a></div>
+      <div class="meta">Journal of Urban Affairs · 2026</div>
+      <div class="why"><b class="lab">Why it's interesting:</b> New large (&gt;50-unit) market-rate buildings affect nearby rents, but the effect varies by the quality and submarket of existing housing — nuancing the claim that new supply uniformly lowers local rents.</div>
+    </div>
+    <div class="item">
+      <div class="title"><a href="https://www.nber.org/papers/w35144" target="_blank" rel="noopener">Characteristics of a Sufficient Statistic to Measure City Housing Prices</a></div>
+      <div class="meta">Broxterman, Larson &amp; Yezer · NBER WP 35144 · Apr 2026</div>
+      <div class="why"><b class="lab">Why it's interesting:</b> Common repeat-sales and hedonic indexes (Case-Shiller, FHFA) aren't quantity-weighted and can misstate a city's price level and change — implying widely-used benchmarks may be biased, and showing how to fix them.</div>
     </div>
 
     <h3 class="cat">By-Right Development &amp; Permitting</h3>
     <div class="item">
-      <div class="title"><a href="https://evansoltas.com/papers/Permitting_SoltasGruber2026.pdf" target="_blank" rel="noopener">How Costly Is Permitting in Housing Development?</a></div>
-      <div class="meta">Evan Soltas &amp; Jonathan Gruber · working paper · 2026</div>
-      <div class="why"><b class="lab">Why it's interesting:</b> Tackles the question at the heart of by-right reform — whether permitting is a minor nuisance or a major impediment in high-cost cities — with credible empirical methods from two leading economists.</div>
-      <span class="cite">Soltas, Evan, and Jonathan Gruber, <a href="https://evansoltas.com/papers/Permitting_SoltasGruber2026.pdf" target="_blank" rel="noopener"><em>How Costly Is Permitting in Housing Development?</em></a>, working paper, 2026.</span>
+      <div class="title"><a href="https://www.pew.org/en/research-and-analysis/reports/2026/05/preapproved-building-plans-help-cities-improve-housing-affordability" target="_blank" rel="noopener">Preapproved Building Plans Help Cities Improve Housing Affordability</a></div>
+      <div class="meta">Pew Charitable Trusts · May 2026</div>
+      <div class="why"><b class="lab">Why it's interesting:</b> 61% of cities using preapproved plans cut more than a month off permitting and some report $10k+/unit savings — a concrete, low-conflict by-right tool that speeds infill without rezoning battles.</div>
     </div>
 
     <h3 class="cat">Finance</h3>
     <div class="item">
-      <div class="title"><a href="https://www.levyinstitute.org/publications/a-premium-crisis-climate-change-threatens-homeowners-insurance-housing-and-financial-stability/" target="_blank" rel="noopener">A Premium Crisis: Climate Change Threatens Homeowner's Insurance, Housing, and Financial Stability</a></div>
-      <div class="meta">Levy Economics Institute of Bard College · 2025</div>
-      <div class="why"><b class="lab">Why it's interesting:</b> Home insurance now accounts for about 9% of the typical monthly payment — a record — and is increasingly a deal-breaker in transactions. Frames climate-driven premium growth as a first-order affordability and financial-stability threat.</div>
-      <span class="cite">Levy Economics Institute of Bard College, <a href="https://www.levyinstitute.org/publications/a-premium-crisis-climate-change-threatens-homeowners-insurance-housing-and-financial-stability/" target="_blank" rel="noopener"><em>A Premium Crisis: Climate Change Threatens Homeowner's Insurance, Housing, and Financial Stability</em></a>, 2025.</span>
+      <div class="title"><a href="https://www.brookings.edu/articles/the-ripple-effects-of-banning-institutional-purchases-of-single-family-rentals/" target="_blank" rel="noopener">The Ripple Effects of Banning Institutional Purchases of Single-Family Rentals</a></div>
+      <div class="meta">Brookings Institution · 2026</div>
+      <div class="why"><b class="lab">Why it's interesting:</b> Institutional investors raised prices in their most concentrated metros but <em>lowered</em> rents; a federal ban (as in the ROAD Act) could backfire on renters — a caution for a politically popular policy.</div>
     </div>
 
-    <h3 class="cat">Density</h3>
-    <p class="thin">Thin this run: the strongest new density-relevant work (minimum-lot-size and parking-mandate reform) is filed under Zoning &amp; Land-Use above, since both bear most directly on achievable density. No standalone density paper cleared the bar without duplicating those.</p>
+    <h3 class="cat">Construction · Density</h3>
+    <div class="none">No new qualifying item in these categories this week (strict no-reuse; prior editions already surfaced the construction-productivity and densification literature). Will revisit next run.</div>
   </section>
 
   <!-- BLOGS -->
@@ -254,33 +200,18 @@
     <div class="sec-kicker">Independent writing</div>
     <h2 class="section">Urbanist Blogs</h2>
     <hr class="section-rule">
+    <div class="section-note">A lighter crop of genuinely new, credentialed pieces this week — two below; quality over quantity per the standing rule.</div>
     <div class="item">
-      <div class="title"><a href="https://mnolangray.substack.com/p/where-are-all-the-cranes" target="_blank" rel="noopener">Where Are All the Cranes?</a></div>
-      <div class="meta">M. Nolan Gray · Arbitrary Lines · 2026</div>
-      <div class="why"><b class="lab">Why it's interesting:</b> Probes why visible construction lags even where reform passed — the gap between legalization and cranes in the ground, the core production question reformers keep hitting.</div>
-      <span class="cred">Author: M. Nolan Gray — professional city planner, research director at California YIMBY, and author of <em>Arbitrary Lines</em>.</span>
-      <span class="cite">Gray, M. Nolan, <a href="https://mnolangray.substack.com/p/where-are-all-the-cranes" target="_blank" rel="noopener">"Where Are All the Cranes?,"</a> Arbitrary Lines, 2026.</span>
+      <div class="title"><a href="https://www.thebulwark.com/p/can-america-get-unstuck-yoni-appelbaum-housing-mobility-zoning" target="_blank" rel="noopener">Can America Get Unstuck?</a></div>
+      <div class="meta">Addison Del Mastro · The Bulwark</div>
+      <div class="why"><b class="lab">Why it's interesting:</b> A review-essay on Yoni Appelbaum's <em>Stuck</em> arguing that zoning throttled the geographic mobility that once powered American opportunity — tying land-use reform to the bigger mobility story.</div>
+      <span class="cred">Author: Addison Del Mastro — urbanism and cultural-history writer (The Resident Urbanist; contributor at The Bulwark).</span>
     </div>
     <div class="item">
-      <div class="title"><a href="https://darrellowens.substack.com/p/california-passes-mass-transit-upzoning" target="_blank" rel="noopener">California Passes Mass Transit Upzoning</a></div>
-      <div class="meta">Darrell Owens · The Discourse Lounge · September 2025</div>
-      <div class="why"><b class="lab">Why it's interesting:</b> An on-the-ground read of SB 79's politics and likely effects from a writer who tracks California legislation closely — useful color on how a major upzoning actually moved.</div>
-      <span class="cred">Author: Darrell Owens — widely-read Bay Area housing-policy analyst.</span>
-      <span class="cite">Owens, Darrell, <a href="https://darrellowens.substack.com/p/california-passes-mass-transit-upzoning" target="_blank" rel="noopener">"California Passes Mass Transit Upzoning,"</a> The Discourse Lounge, September 2025.</span>
-    </div>
-    <div class="item">
-      <div class="title"><a href="https://www.theurbanist.org/2025/12/30/op-ed-seattles-path-to-fund-inclusionary-zoning-and-boost-homebuilding/" target="_blank" rel="noopener">Seattle's Path to Fund Inclusionary Zoning and Boost Homebuilding</a></div>
-      <div class="meta">Sightline Institute · The Urbanist · December 2025</div>
-      <div class="why"><b class="lab">Why it's interesting:</b> Argues "funded" inclusionary zoning — the ingredient that unlocked Washington's 2025 TOD bill — lets a city require affordability without choking feasibility.</div>
-      <span class="cred">Author: Sightline Institute — a leading Pacific Northwest sustainability and housing think tank.</span>
-      <span class="cite">Sightline Institute, <a href="https://www.theurbanist.org/2025/12/30/op-ed-seattles-path-to-fund-inclusionary-zoning-and-boost-homebuilding/" target="_blank" rel="noopener">"Seattle's Path to Fund Inclusionary Zoning and Boost Homebuilding,"</a> The Urbanist, December 30, 2025.</span>
-    </div>
-    <div class="item">
-      <div class="title"><a href="https://www.construction-physics.com/p/trends-in-us-construction-productivity" target="_blank" rel="noopener">Trends in US Construction Productivity</a></div>
-      <div class="meta">Brian Potter · Construction Physics · 2025</div>
-      <div class="why"><b class="lab">Why it's interesting:</b> The long data record behind the productivity-stagnation debate, in accessible form — useful backbone for the land-supply and tariffs items above.</div>
-      <span class="cred">Author: Brian Potter — engineer and senior fellow at the Institute for Progress; the field's leading construction-cost writer.</span>
-      <span class="cite">Potter, Brian, <a href="https://www.construction-physics.com/p/trends-in-us-construction-productivity" target="_blank" rel="noopener">"Trends in US Construction Productivity,"</a> Construction Physics, 2025.</span>
+      <div class="title"><a href="https://www.residenturbanist.com/p/tiny-storefronts-sidewalk" target="_blank" rel="noopener">Tiny Storefronts (By the Sidewalk)</a></div>
+      <div class="meta">Addison Del Mastro · The Resident Urbanist</div>
+      <div class="why"><b class="lab">Why it's interesting:</b> Makes the case for legalizing small neighborhood retail and mixed-use as a form of gentle density — the fine-grained urbanism that zoning usually forbids.</div>
+      <span class="cred">Author: Addison Del Mastro — writes on small-town and suburban urbanism, retail, and land use.</span>
     </div>
   </section>
 
@@ -292,60 +223,52 @@
     <div class="legend">
       <span><span class="badge b-enacted">Enacted</span></span>
       <span><span class="badge b-passed">Passed chamber(s)</span></span>
+      <span><span class="badge b-committee">In committee</span></span>
       <span><span class="badge b-introduced">Introduced</span></span>
       <span><span class="badge b-proposal">Proposal</span></span>
     </div>
 
     <h3 class="cat">Federal</h3>
-    <div class="section-note">No new federal bill this week. The 21st Century ROAD to Housing Act (enacted) remains tracked from a prior edition.</div>
+    <div class="section-note">No new federal bill this week beyond items tracked in prior editions.</div>
 
     <h3 class="cat">State</h3>
     <div class="leg-card">
-      <div class="lvl">State · Texas</div>
-      <div class="bill"><a href="https://capitol.texas.gov/BillLookup/History.aspx?LegSess=89R&Bill=SB840" target="_blank" rel="noopener">SB 840 — By-right multifamily on commercial land</a></div>
-      <div class="plain">Apartments allowed by right in commercial/office/retail zones in large cities.</div>
-      <span class="badge b-enacted">Enacted · eff. Sept 1, 2025</span>
-      <div class="field"><b>What it does:</b> Permits multifamily housing by right on commercially/office/retail-zoned land in large Texas cities, with no rezoning, variance, or public hearing.</div>
-      <div class="field"><b>Why it matters:</b> Opens vast commercial acreage in Texas's biggest metros to housing — a live by-right model.</div>
-      <a class="src" href="https://capitol.texas.gov/BillLookup/History.aspx?LegSess=89R&Bill=SB840" target="_blank" rel="noopener">Official bill history →</a>
+      <div class="lvl">State · Massachusetts</div>
+      <div class="bill"><a href="https://www.mass.gov/news/accessory-dwelling-units-officially-allowed-statewide" target="_blank" rel="noopener">Affordable Homes Act (Ch. 150 of 2024), §8 — statewide ADU by-right</a></div>
+      <div class="plain">ADUs up to 900 sq ft allowed by right in single-family zones statewide.</div>
+      <span class="badge b-enacted">Enacted · ADU provision eff. Feb 2, 2025</span>
+      <div class="field"><b>What it does:</b> Amends the Zoning Act so ADUs up to 900 sq ft are permitted by right in single-family districts in all communities (Boston has its own ordinance).</div>
+      <div class="field"><b>Why it matters:</b> The Northeast's most sweeping ADU reform and a statewide by-right template.</div>
+      <a class="src" href="https://www.mass.gov/news/accessory-dwelling-units-officially-allowed-statewide" target="_blank" rel="noopener">Official announcement →</a>
     </div>
     <div class="leg-card">
-      <div class="lvl">State · Texas</div>
-      <div class="bill"><a href="https://capitol.texas.gov/BillLookup/History.aspx?LegSess=89R&Bill=SB15" target="_blank" rel="noopener">SB 15 — Starter homes / minimum lot size reform</a></div>
-      <div class="plain">Bars big cities from mandating lots above 3,000 sq ft in new subdivisions.</div>
-      <span class="badge b-enacted">Enacted · eff. Sept 1, 2025</span>
-      <div class="field"><b>What it does:</b> Prevents major Texas cities from requiring lot sizes larger than 3,000 sq ft for homes in new subdivisions.</div>
-      <div class="field"><b>Why it matters:</b> Directly attacks large-lot mandates that price out starter homes.</div>
-      <a class="src" href="https://capitol.texas.gov/BillLookup/History.aspx?LegSess=89R&Bill=SB15" target="_blank" rel="noopener">Official bill history →</a>
+      <div class="lvl">State · New York</div>
+      <div class="bill"><a href="https://www.nysenate.gov/legislation/bills/2025/S4547" target="_blank" rel="noopener">S4547(A) — Accessory Dwelling Unit authorization</a></div>
+      <div class="plain">Would set statewide rules permitting ADUs.</div>
+      <span class="badge b-committee">Introduced / in committee</span>
+      <div class="field"><b>What it does:</b> Would establish statewide authorization and standards for accessory dwelling units.</div>
+      <div class="field"><b>Why it matters:</b> Would extend ADU-by-right to the nation's third-largest state, today a patchwork of local rules.</div>
+      <a class="src" href="https://www.nysenate.gov/legislation/bills/2025/S4547" target="_blank" rel="noopener">Official bill page →</a>
     </div>
     <div class="leg-card">
-      <div class="lvl">State · California</div>
-      <div class="bill"><a href="https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB79" target="_blank" rel="noopener">SB 79 — Transit-oriented development &amp; upzoning</a></div>
-      <div class="plain">Higher-density housing allowed by right near qualifying transit stops.</div>
-      <span class="badge b-enacted">Signed Oct 2025 · eff. Jul 1, 2026</span>
-      <div class="field"><b>What it does:</b> Makes higher-density transit-oriented housing an allowed use near qualifying transit stops in urban transit counties, with affordability minimums.</div>
-      <div class="field"><b>Why it matters:</b> California's most significant statewide upzoning in years.</div>
-      <a class="src" href="https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB79" target="_blank" rel="noopener">Official bill text →</a>
-    </div>
-    <div class="leg-card">
-      <div class="lvl">State · Florida</div>
-      <div class="bill"><a href="https://www.flsenate.gov/Session/Bill/2026/48" target="_blank" rel="noopener">SB 48 / HB 313 — Statewide ADU mandate</a></div>
-      <div class="plain">Would require ADUs to be allowed in every single-family zone.</div>
-      <span class="badge b-introduced">Introduced / in process</span>
-      <div class="field"><b>What it does:</b> Would require all Florida local governments to allow accessory dwelling units in every single-family zone.</div>
-      <div class="field"><b>Why it matters:</b> Would make ADUs by-right statewide — a low-conflict density lever.</div>
-      <a class="src" href="https://www.flsenate.gov/Session/Bill/2026/48" target="_blank" rel="noopener">Official bill page →</a>
+      <div class="lvl">State · Michigan</div>
+      <div class="bill"><a href="https://gophouse.org/posts/lawmakers-unveil-bipartisan-plan-to-lower-the-cost-of-housing" target="_blank" rel="noopener">Bipartisan housing-cost package</a></div>
+      <div class="plain">A bipartisan plan to lower housing costs via land-use and permitting changes.</div>
+      <span class="badge b-proposal">Proposal (2026)</span>
+      <div class="field"><b>What it does:</b> A newly unveiled bipartisan framework targeting land-use and permitting barriers to housing.</div>
+      <div class="field"><b>Why it matters:</b> Signals reform momentum reaching the industrial Midwest.</div>
+      <a class="src" href="https://gophouse.org/posts/lawmakers-unveil-bipartisan-plan-to-lower-the-cost-of-housing" target="_blank" rel="noopener">Announcement →</a>
     </div>
 
     <h3 class="cat">Local</h3>
     <div class="leg-card">
-      <div class="lvl">Local · Seattle, WA</div>
-      <div class="bill"><a href="https://www.theurbanist.org/2025/12/17/seattle-oks-new-growth-plan-but-biggest-zoning-battles-lie-ahead/" target="_blank" rel="noopener">One Seattle Comprehensive Plan — adopted</a></div>
-      <div class="plain">Citywide growth framework approved; implementing rezones still ahead.</div>
-      <span class="badge b-passed">Status update · adopted Dec 2025</span>
-      <div class="field"><b>What it does:</b> Council approved the new growth plan (previously tracked here as a proposal); the contested implementing rezones remain to be decided.</div>
-      <div class="field"><b>Why it matters:</b> Moves Seattle from planning into the harder zoning-implementation phase.</div>
-      <a class="src" href="https://www.theurbanist.org/2025/12/17/seattle-oks-new-growth-plan-but-biggest-zoning-battles-lie-ahead/" target="_blank" rel="noopener">Coverage →</a>
+      <div class="lvl">Local · New York City, NY</div>
+      <div class="bill"><a href="https://www.nyc.gov/site/buildings/codes/adu.page" target="_blank" rel="noopener">Local Laws 126 &amp; 127 of 2024 — Ancillary Dwelling Units (City of Yes)</a></div>
+      <div class="plain">ADUs permitted in attics, basements, and detached structures for 1–2 family homes.</div>
+      <span class="badge b-enacted">Enacted Dec 2024 · Plus One financing reopened Mar 2026</span>
+      <div class="field"><b>What it does:</b> Legalizes ADUs in one- and two-family homes citywide; the Plus One ADU program offers homeowners up to $395k in combined financing.</div>
+      <div class="field"><b>Why it matters:</b> Brings ADUs to the country's largest city, pairing legalization with real construction financing.</div>
+      <a class="src" href="https://www.nyc.gov/site/buildings/codes/adu.page" target="_blank" rel="noopener">NYC Buildings ADU page →</a>
     </div>
   </section>
 
@@ -354,48 +277,27 @@
     <div class="sec-kicker">Data infrastructure</div>
     <h2 class="section">Housing Datasets</h2>
     <hr class="section-rule">
-    <div class="section-note">New datasets this run (not previously surfaced).</div>
+    <div class="section-note">New this week (not previously in the archive — prior editions already covered Census BPS, AHS, the National Zoning Atlas, FHFA HPI, Eviction Lab, and HUD USPS vacancy).</div>
     <div class="item">
-      <div class="title"><a href="https://www.fhfa.gov/data/hpi" target="_blank" rel="noopener">FHFA House Price Index (HPI)</a></div>
-      <div class="meta">Federal Housing Finance Agency · ongoing · canonical</div>
-      <div class="why"><b class="lab">What's in it:</b> A repeat-sales house-price index available down to ZIP and county level — the standard series for tracking price appreciation across geographies and over time.</div>
-      <span class="cite">Federal Housing Finance Agency, <a href="https://www.fhfa.gov/data/hpi" target="_blank" rel="noopener">House Price Index</a>, ongoing.</span>
+      <div class="title"><a href="https://www.consumerfinance.gov/data-research/hmda/" target="_blank" rel="noopener">Home Mortgage Disclosure Act (HMDA) Data</a></div>
+      <div class="meta">CFPB / FFIEC · updated annually · canonical</div>
+      <div class="why"><b class="lab">What's in it:</b> The most comprehensive public record of US mortgage applications and originations — lender, loan terms, geography, and borrower demographics. The standard source for housing-finance, credit-access, and fair-lending analysis.</div>
     </div>
     <div class="item">
-      <div class="title"><a href="https://evictionlab.org/" target="_blank" rel="noopener">Eviction Lab</a></div>
-      <div class="meta">Princeton University (Matthew Desmond) · ongoing · niche, credibly maintained</div>
-      <div class="why"><b class="lab">What's in it:</b> Nationwide eviction filings and rates by place — the leading source for housing-instability and displacement analysis. <em>Verify local coverage and years, which vary by jurisdiction.</em></div>
-      <span class="cite">Princeton University, <a href="https://evictionlab.org/" target="_blank" rel="noopener">Eviction Lab</a>, ongoing.</span>
+      <div class="title"><a href="https://www.census.gov/construction/chars/" target="_blank" rel="noopener">Survey of Construction / Characteristics of New Housing (SOC)</a></div>
+      <div class="meta">U.S. Census Bureau · annual · canonical</div>
+      <div class="why"><b class="lab">What's in it:</b> Annual detail on what new homes actually are — size, lot size, sale price, and features — the standard series for trends in new single-family and multifamily characteristics.</div>
     </div>
     <div class="item">
-      <div class="title"><a href="https://www.huduser.gov/portal/datasets/usps.html" target="_blank" rel="noopener">HUD Aggregated USPS Administrative Data on Address Vacancies</a></div>
-      <div class="meta">U.S. Department of Housing and Urban Development / USPS · quarterly · government-maintained</div>
-      <div class="why"><b class="lab">What's in it:</b> Quarterly address-level vacancy and "no-stat" counts by census geography — a timely proxy for neighborhood vacancy and market slack between decennial counts.</div>
-      <span class="cite">U.S. Department of Housing and Urban Development, <a href="https://www.huduser.gov/portal/datasets/usps.html" target="_blank" rel="noopener">Aggregated USPS Administrative Data on Address Vacancies</a>, quarterly.</span>
-    </div>
-  </section>
-
-  <!-- EVIDENCE -->
-  <section id="evidence">
-    <div class="sec-kicker">Per EIG guardrails</div>
-    <h2 class="section">Evidence</h2>
-    <hr class="section-rule">
-    <div class="evidence">
-      <p><b>Sources:</b> Every item links to a primary or authoritative source, listed inline in EIG citation style. Research: Federal Reserve Bank of Boston (WP 26-7), Texas Public Policy Foundation, Pioneer Institute, Brookings Institution, Soltas &amp; Gruber working paper, Levy Economics Institute. Legislation: official legislature pages (Texas Capitol, California leginfo, Florida Senate) and The Urbanist for the Seattle status update. Datasets: FHFA, Princeton Eviction Lab, HUD USER. Running archive: <code>Housing_Research_Monitor_archive.csv</code>.</p>
-      <p><b>Confidence:</b></p>
-      <ul>
-        <li><b>High</b> — Bill statuses and effective dates (TX SB 840/SB 15, CA SB 79), and the Boston Fed paper's findings and date (verified against the source page).</li>
-        <li><b>High</b> — Dataset provenance and contents (FHFA, Eviction Lab, HUD USPS are well-established).</li>
-        <li><b>Medium</b> — Secondary quantitative claims drawn from summaries rather than full texts (e.g., Brookings's ~450,000-fewer-homes tariff estimate; the "~9% of monthly payment" insurance figure; Houston lot-size outcomes). Directional confidence is high; exact magnitudes should be checked against the full source before citation in EIG output.</li>
-        <li><b>Medium</b> — The Soltas &amp; Gruber paper is hosted on the author's site; treat as a working paper pending journal/NBER versioning.</li>
-      </ul>
-      <p><b>Assumptions:</b> (1) The 12-month window is anchored to the generation date (June 2, 2026); the Texas Policy minimum-lot piece (Jan 2025) sits just inside it. (2) "New items only" is enforced by deduplicating candidate URLs against the running archive. (3) Legislature URL formats are current; if a bill page has been reorganized a link may need updating. (4) Parking and minimum-lot reforms are filed under Zoning &amp; Land-Use rather than Density to avoid double-counting. No data, citations, or results were fabricated; where a figure could not be independently verified here, it is flagged Medium above.</p>
+      <div class="title"><a href="https://www.huduser.gov/portal/datasets/assthsg.html" target="_blank" rel="noopener">A Picture of Subsidized Households</a></div>
+      <div class="meta">HUD · annual · canonical (government-maintained)</div>
+      <div class="why"><b class="lab">What's in it:</b> Program-level data on federally subsidized housing — units, tenants, and rents down to the development and tract level — the reference dataset for the assisted-housing stock.</div>
     </div>
   </section>
 
   <footer>
-    Housing Research Monitor · generated Tuesday, June 2, 2026 · self-contained file, no external dependencies.<br>
-    Styled to the EIG 2022 brand palette and type system (Source Serif Pro / Open Sans, with documented web-safe fallbacks). Rolling 12-month window; Paper of the Week = trailing 7 days; datasets date-agnostic. Strict no-reuse against the running archive.
+    Housing Research Monitor · generated Tuesday, June 23, 2026 · self-contained file, no external dependencies.<br>
+    Rolling 12-month window (Paper of the Week = trailing 7 days; Housing Datasets = date-agnostic). Strict no-reuse against the running archive; every item new this edition.
   </footer>
 
 </div>
