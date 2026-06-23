@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Housing Monitor — June 8, 2026</title>
+<style>
+  :root{
+    --ink:#1a1d24; --muted:#5b6472; --line:#e4e7ec; --bg:#f5f6f8; --card:#ffffff;
+    --accent:#1f6f5c; --accent-soft:#e8f2ef; --gold:#b3801f; --gold-soft:#fbf2dd;
+    --blue:#2b5d8a; --blue-soft:#e9f0f6;
+    --s-intro:#6b7280; --s-passed:#1f6f5c; --s-enacted:#15803d; --s-proposal:#7c5cbf;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    line-height:1.55;-webkit-font-smoothing:antialiased;}
+  a{color:var(--blue);}
+  .wrap{max-width:840px;margin:0 auto;padding:0 20px 72px;}
+  header{background:linear-gradient(135deg,#1f6f5c,#143f35);color:#fff;padding:46px 20px 38px;text-align:center;}
+  header .kicker{text-transform:uppercase;letter-spacing:.18em;font-size:12px;opacity:.85;margin:0 0 10px;}
+  header h1{margin:0;font-size:33px;font-weight:700;letter-spacing:-.01em;}
+  header .gen{margin:12px 0 0;font-size:14px;opacity:.92;}
+  nav.toc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:26px 0;font-size:14px;}
+  nav.toc strong{display:block;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:var(--muted);margin-bottom:8px;}
+  nav.toc a{display:inline-block;margin:3px 14px 3px 0;text-decoration:none;border-bottom:1px solid #cdd9e6;}
+  nav.toc a:hover{border-color:var(--blue);}
+
+  /* TOP-LEVEL SECTION HEADERS — large & uniform */
+  h2.section{font-size:30px;font-weight:800;letter-spacing:-.015em;color:var(--ink);
+    margin:54px 0 4px;padding-bottom:10px;border-bottom:3px solid var(--accent);}
+  h2.section .eyebrow{display:block;font-size:12px;font-weight:700;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:2px;}
+  h2.section.alt{border-color:var(--blue);}
+  h2.section.alt .eyebrow{color:var(--blue);}
+  h2.section.gold{border-color:var(--gold);}
+  h2.section.gold .eyebrow{color:var(--gold);}
+
+  /* CATEGORY / SUB-HEADERS — clearly smaller */
+  .theme{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--muted);margin:26px 0 4px;}
+  .subhead{font-size:16px;font-weight:700;color:var(--ink);margin:24px 0 6px;}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:14px 0;
+    box-shadow:0 1px 2px rgba(16,24,40,.04);}
+  .card h3{margin:0 0 6px;font-size:17px;line-height:1.35;}
+  .card h3 a{color:var(--ink);text-decoration:none;}
+  .card h3 a:hover{color:var(--accent);text-decoration:underline;}
+  .meta{font-size:12.5px;color:var(--muted);margin:0 0 10px;}
+  .card p{margin:0 0 8px;font-size:14.5px;}
+  .why{color:var(--accent);font-weight:600;}
+  .cred{font-size:13px;color:var(--muted);font-style:italic;}
+  .tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+    padding:2px 8px;border-radius:20px;margin-left:6px;vertical-align:middle;}
+  .tag.cite{background:var(--accent-soft);color:var(--accent);}
+  .tag.flag{background:var(--gold-soft);color:var(--gold);}
+
+  .top .card{border-left:4px solid var(--gold);}
+  .rank{display:inline-flex;width:24px;height:24px;border-radius:50%;background:var(--gold);color:#fff;
+    font-size:13px;font-weight:700;align-items:center;justify-content:center;margin-right:8px;}
+
+  .potw{background:linear-gradient(135deg,#fbf2dd,#fff);border:1px solid #ecd9a8;border-left:5px solid var(--gold);
+    border-radius:14px;padding:24px;margin:14px 0;}
+  .potw .badge{display:inline-block;background:var(--gold);color:#fff;font-size:11px;font-weight:700;
+    letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:12px;}
+  .potw h3{margin:0 0 6px;font-size:21px;line-height:1.3;}
+  .potw h3 a{color:var(--ink);text-decoration:none;}
+  .potw h3 a:hover{text-decoration:underline;}
+
+  .leg .card{margin:0 0 14px;}
+  .lvl{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);}
+  .status{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+    color:#fff;padding:3px 11px;border-radius:20px;margin-left:8px;vertical-align:middle;}
+  .st-intro{background:var(--s-intro);} .st-passed{background:var(--s-passed);}
+  .st-enacted{background:var(--s-enacted);} .st-proposal{background:var(--s-proposal);}
+  .leg .label{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin:8px 0 1px;}
+
+  .qbox{background:var(--blue-soft);border:1px solid #d4e1ee;border-radius:12px;padding:18px 22px;margin:14px 0 8px;}
+  .qbox h4{margin:0 0 8px;font-size:15px;color:var(--blue);}
+  .qbox ol{margin:0;padding-left:20px;}
+  .qbox li{font-size:14px;margin:6px 0;}
+  .note{font-size:13px;color:var(--muted);margin:6px 0 0;}
+  footer{text-align:center;color:var(--muted);font-size:12.5px;margin-top:50px;border-top:1px solid var(--line);padding-top:20px;}
+</style>
+</head>
+<body>
+<header>
+  <p class="kicker">Housing Monitor</p>
+  <h1>Housing Research, Writing &amp; Legislation</h1>
+  <p class="gen">Generated June 8, 2026 · Rolling one-year window · Curated, deduped against the running archive</p>
+</header>
+
+<div class="wrap">
+
+  <nav class="toc">
+    <strong>Jump to</strong>
+    <a href="#top5">Top 5</a>
+    <a href="#potw">Paper of the Week</a>
+    <a href="#research">Research Roundup</a>
+    <a href="#blogs">Urbanist Blogs</a>
+    <a href="#legislation">Legislation Tracker</a>
+    <a href="#rbz">Right to Build Zones</a>
+    <a href="#data">Housing Datasets</a>
+  </nav>
+
+  <!-- TOP 5 -->
+  <h2 class="section gold" id="top5"><span class="eyebrow">Start here</span>Top 5 Things to Know</h2>
+  <div class="top">
+    <div class="card">
+      <h3><span class="rank">1</span><a href="https://www.urban.org/research/publication/how-big-upzonings-affect-housing-supply" target="_blank" rel="noopener">Big upzonings really do add supply — quantified</a></h3>
+      <p class="meta">Urban Institute · Apr 2026 · Zoning &amp; Land-Use</p>
+      <p><span class="why">Why it's interesting:</span> Seven NYC neighborhood upzonings produced 4,000+ extra units in four years versus comparable parcels — rare causal, measured evidence on your highest-interest theme.</p>
+    </div>
+    <div class="card">
+      <h3><span class="rank">2</span><a href="https://www.nber.org/papers/w33188" target="_blank" rel="noopener">Land-use rules, not technology, broke construction productivity</a></h3>
+      <p class="meta">D'Amico, Glaeser, Gyourko, Kerr &amp; Ponzetto · NBER · Nov 2024 (landmark)</p>
+      <p><span class="why">Why it's interesting:</span> Project-level land-use limits shrink builders, killing scale economies and innovation; US homebuilders could be ~60% more productive at manufacturing-like scale.</p>
+    </div>
+    <div class="card">
+      <h3><span class="rank">3</span><a href="https://www.nber.org/papers/w35237" target="_blank" rel="noopener">Mortgage lock-in raises prices — and demand-side fixes misfire</a></h3>
+      <p class="meta">Fonseca, Liu &amp; Mabille · NBER · May 2026 · Paper of the Week</p>
+      <p><span class="why">Why it's interesting:</span> Counter to the supply-starvation story, lock-in raises net demand and lifts prices 4.4%; a starter-home tax credit costs ~$650k per marginal move.</p>
+    </div>
+    <div class="card">
+      <h3><span class="rank">4</span><a href="https://www.tandfonline.com/doi/full/10.1080/01944363.2025.2604129" target="_blank" rel="noopener">Upzoning alone doesn't densify — lot history does</a></h3>
+      <p class="meta">Journal of the American Planning Association · Jan 2026 · Density</p>
+      <p><span class="why">Why it's interesting:</span> Former industrial parcels and larger lots do the densification work; blanket upzoning without the right lot conditions underperforms.</p>
+    </div>
+    <div class="card">
+      <h3><span class="rank">5</span><a href="https://www.nber.org/papers/w35204" target="_blank" rel="noopener">Floodplain households may be less vulnerable than we thought</a></h3>
+      <p class="meta">Qin &amp; Voorheis · NBER · May 2026 · Finance</p>
+      <p><span class="why">Why it's interesting:</span> Census parcel-level data flips the aggregate-data consensus — floodplain residents look increasingly protected, though a low-income uninsured subgroup stays exposed.</p>
+    </div>
+  </div>
+
+  <!-- PAPER OF THE WEEK -->
+  <h2 class="section gold" id="potw"><span class="eyebrow">7-day pick</span>Paper of the Week</h2>
+  <div class="potw">
+    <span class="badge">★ Paper of the Week · published May 25, 2026</span>
+    <h3><a href="https://www.nber.org/papers/w35237" target="_blank" rel="noopener">Unlocking Mortgage Lock-In: Equilibrium Effects in a Spatial Housing Ladder Model</a></h3>
+    <p class="meta">Julia Fonseca, Lu Liu &amp; Pierre Mabille · NBER Working Paper 35237</p>
+    <p><span class="why">Why it's interesting:</span> Lock-in is usually told as a supply story, but this paper shows it <em>raises net housing demand</em> — "missing downsizers" stay in larger homes, especially in expensive areas, offsetting a third of the price decline higher rates would otherwise cause. A temporary rate hike lifts house prices 4.4% and rents 1.5% versus a no-lock-in world, while borrower mobility falls 25%. The sharpest takeaway: a $10k starter-home-seller tax credit costs an estimated <strong>$650,000 per marginal move</strong>, so demand-based responses to lock-in are poorly targeted.</p>
+    <p class="note">Citation signal: brand-new working paper, so counts aren't yet meaningful — selected on result strength and timeliness. It was the only quality paper inside the 7-day window (the May 18 flood paper just misses it and appears under Finance).</p>
+  </div>
+
+  <!-- RESEARCH ROUNDUP -->
+  <h2 class="section" id="research"><span class="eyebrow">Academic &amp; think-tank</span>Research Roundup</h2>
+
+  <p class="theme">Zoning &amp; Land-Use Reform · highest-interest</p>
+  <div class="card">
+    <h3><a href="https://www.urban.org/research/publication/how-big-upzonings-affect-housing-supply" target="_blank" rel="noopener">How Big Upzonings Affect Housing Supply</a></h3>
+    <p class="meta">Urban Institute · April 2026</p>
+    <p><span class="why">Why it's interesting:</span> Seven NYC neighborhood-scale upzonings produced 4,000+ extra units within four years versus comparable non-upzoned parcels — rare causal, quantified evidence that large upzonings move supply on a meaningful timescale.</p>
+  </div>
+  <div class="card">
+    <h3><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5205801" target="_blank" rel="noopener">Zoning and the Dynamics of Urban Redevelopment</a></h3>
+    <p class="meta">Vincent Rollet · SSRN working paper · Oct 2025</p>
+    <p><span class="why">Why it's interesting:</span> The counterpoint to the item above: a dynamic GE model on NYC parcel data finds the supply response to relaxing zoning takes <em>decades</em> and barely registers in inexpensive or already-dense areas.</p>
+  </div>
+
+  <p class="theme">Prices &amp; Rents</p>
+  <div class="card">
+    <h3><a href="https://www.sciencedirect.com/science/article/abs/pii/S016604622500105X" target="_blank" rel="noopener">The Effect of Rezoning on Local Housing Supply and Demand: Evidence from NYC</a></h3>
+    <p class="meta">Regional Science and Urban Economics, vol. 117 · 2026</p>
+    <p><span class="why">Why it's interesting:</span> Upzoning is associated with more production <em>and</em> higher prices and more intense gentrification — a clean look at the double edge of rezoning, useful for thinking through RTBZ displacement effects.</p>
+  </div>
+
+  <p class="theme">Construction</p>
+  <div class="card">
+    <h3><a href="https://www.nber.org/papers/w33188" target="_blank" rel="noopener">Why Has Construction Productivity Stagnated? The Role of Land-Use Regulation <span class="tag flag">Landmark · Nov 2024</span></a></h3>
+    <p class="meta">Leonardo D'Amico, Edward Glaeser, Joseph Gyourko, William Kerr &amp; Giacomo Ponzetto · NBER WP 33188</p>
+    <p><span class="why">Why it's interesting:</span> Documents a Kuznets curve in homebuilding productivity (boom 1940–70, collapse after 1970) and argues project-level land-use limits shrink builder size, killing scale economies and innovation — firms could be ~60% more productive at manufacturing-like scale. <span class="tag cite">Heavily cited/covered for its age</span></p>
+  </div>
+  <div class="card">
+    <h3><a href="https://ternercenter.berkeley.edu/research-and-policy/" target="_blank" rel="noopener">Potential Pathways to Scale Innovative Construction Methods in California</a></h3>
+    <p class="meta">UC Berkeley Terner Center · March 2026</p>
+    <p><span class="why">Why it's interesting:</span> From 65+ interviews, a grounded account of why modular/industrialized construction keeps failing to scale — financing structure, code fragmentation, and pipeline volatility rather than the technology itself.</p>
+  </div>
+
+  <p class="theme">By-Right Development &amp; Permitting</p>
+  <div class="card">
+    <h3><a href="https://www.sciencedirect.com/science/article/pii/S1051137724000019" target="_blank" rel="noopener">Built Out Cities? A New Approach to Measuring Land Use Regulation</a></h3>
+    <p class="meta">Paavo Monkkonen, Michael Manville &amp; Michael Lens · Journal of Housing Economics</p>
+    <p><span class="why">Why it's interesting:</span> Uses cities' self-reported zoned capacity instead of survey indexes and finds modest deregulation in high-demand cities yields far more housing than big deregulation in low-demand ones — reframes where expanding by-right capacity actually pays off.</p>
+  </div>
+
+  <p class="theme">Finance</p>
+  <div class="card">
+    <h3><a href="https://www.nber.org/papers/w35204" target="_blank" rel="noopener">Flood Risk, Insurance, and Housing in the United States</a></h3>
+    <p class="meta">Suvy Qin &amp; John L. Voorheis · NBER WP 35204 · May 2026</p>
+    <p><span class="why">Why it's interesting:</span> Using confidential Census parcel-level data, floodplain households appear <em>less</em> disadvantaged and increasingly protected over time — contradicting the aggregate-data literature — though a vulnerable low-income, uninsured-homeowner subgroup remains exposed.</p>
+  </div>
+
+  <p class="theme">Density</p>
+  <div class="card">
+    <h3><a href="https://www.tandfonline.com/doi/full/10.1080/01944363.2025.2604129" target="_blank" rel="noopener">The Limits of Upzoning: Historic Land Use, Amenity, and Lot-Scale Drivers of Densification</a></h3>
+    <p class="meta">Journal of the American Planning Association · Jan 2026</p>
+    <p><span class="why">Why it's interesting:</span> Upzoning alone is insufficient for densification; former industrial parcels and larger lots are far likelier to actually densify — a lot-scale and land-history lens planners usually overlook.</p>
+  </div>
+
+  <!-- BLOGS -->
+  <h2 class="section alt" id="blogs"><span class="eyebrow">Independent writing</span>Urbanist Blogs</h2>
+  <div class="card">
+    <h3><a href="https://www.construction-physics.com/p/where-are-the-economies-of-scale" target="_blank" rel="noopener">Where Are the Economies of Scale in Homebuilding?</a></h3>
+    <p class="meta">Brian Potter · Construction Physics</p>
+    <p><span class="why">Why it's interesting:</span> Large national builders use the same basic methods as small ones and subcontract nearly all actual building, so volume buys only modest material discounts — a structural explanation for why homebuilding resists industrialization (pairs with the construction-productivity paper above).</p>
+    <p class="cred">Author: Brian Potter — engineer and senior fellow at the Institute for Progress; the most-read writer on construction costs and productivity.</p>
+  </div>
+  <div class="card">
+    <h3><a href="https://www.slowboring.com/p/housing-abundance-beyond-my-backyard" target="_blank" rel="noopener">Housing Abundance Beyond My Backyard</a></h3>
+    <p class="meta">Matthew Yglesias · Slow Boring</p>
+    <p><span class="why">Why it's interesting:</span> Argues the housing-abundance agenda has to scale beyond individual cities into regional and national policy to actually move affordability.</p>
+    <p class="cred">Author: Matthew Yglesias — Vox co-founder and one of the most influential writers in the housing-abundance movement.</p>
+  </div>
+  <div class="card">
+    <h3><a href="https://cityobservatory.org/housing_cortright/" target="_blank" rel="noopener">Housing: A Shortage of Cities</a></h3>
+    <p class="meta">Joe Cortright · City Observatory</p>
+    <p><span class="why">Why it's interesting:</span> Reframes the crisis as a shortage of access to high-demand cities rather than a raw shortage of units — sharpening where new supply matters most.</p>
+    <p class="cred">Author: Joe Cortright — urban economist and long-time housing and land-use analyst.</p>
+  </div>
+  <div class="card">
+    <h3><a href="https://buildthenextrightthing.substack.com/p/this-chart-is-a-big-freakin-deal" target="_blank" rel="noopener">This Chart Is a Big Freakin' Deal</a></h3>
+    <p class="meta">Seth Zeren · Build the Next Right Thing</p>
+    <p><span class="why">Why it's interesting:</span> A practitioner's read on construction-cost and productivity trends and what they mean for whether reform can actually lower prices.</p>
+    <p class="cred">Author: Seth Zeren — developer and city planner writing from inside the building process.</p>
+  </div>
+
+  <!-- LEGISLATION -->
+  <h2 class="section" id="legislation"><span class="eyebrow">Complete tracker</span>Legislation Tracker</h2>
+
+  <p class="theme">Federal</p>
+  <div class="leg">
+    <div class="card">
+      <span class="lvl">Federal · United States</span><span class="status st-passed">Passed both chambers</span>
+      <h3 style="margin-top:6px;"><a href="https://www.congress.gov/bill/119th-congress/house-bill/6644" target="_blank" rel="noopener">21st Century ROAD to Housing Act (H.R. 6644 / S. 2651)</a></h3>
+      <p class="label">What it does</p>
+      <p>Streamlines environmental review, modernizes manufactured-housing rules, expands FHA multifamily loan limits and the HOME program, and limits large institutional investors. <em>Senate 89–10; House amended 396–13 (May 20, 2026).</em></p>
+      <p class="label">Why it matters</p>
+      <p>The most significant bipartisan federal housing bill in years.</p>
+    </div>
+  </div>
+
+  <p class="theme">State</p>
+  <div class="leg">
+    <div class="card">
+      <span class="lvl">State · Colorado</span><span class="status st-enacted">Signed into law</span>
+      <h3 style="margin-top:6px;"><a href="https://leg.colorado.gov/bills/HB26-1001" target="_blank" rel="noopener">HB26-1001 — HOME Act (Housing Developments on Qualifying Properties)</a></h3>
+      <p class="label">What it does</p>
+      <p>Lets nonprofits, housing authorities, school/college districts, and transit districts build housing on their land by right; bars height-based denials up to 3 stories / 45 ft.</p>
+      <p class="label">Why it matters</p>
+      <p>Unlocks publicly and institutionally held land for housing.</p>
+    </div>
+    <div class="card">
+      <span class="lvl">State · Kansas</span><span class="status st-passed">Passed both chambers</span>
+      <h3 style="margin-top:6px;"><a href="https://www.kslegislature.gov/li/b2025_26/measures/sb418/" target="_blank" rel="noopener">SB 418 — By-Right Housing Development Act</a></h3>
+      <p class="label">What it does</p>
+      <p>Auto-approves zoning-compliant developments under 12 units on less than an acre, cutting discretionary review. <em>House 97–27; Senate Feb 2026.</em></p>
+      <p class="label">Why it matters</p>
+      <p>By-right approval is the production lever many reforms miss — directly relevant to RTBZ mechanics.</p>
+    </div>
+    <div class="card">
+      <span class="lvl">State · Florida</span><span class="status st-enacted">Passed · effective Jul 1, 2026</span>
+      <h3 style="margin-top:6px;"><a href="https://www.flsenate.gov/Session/Bill/2026/1389" target="_blank" rel="noopener">HB 1389 — Live Local Act update &amp; housing measures</a></h3>
+      <p class="label">What it does</p>
+      <p>Strengthens Live Local Act zoning preemptions and tax exemptions plus other affordability measures. <em>House 98–4; Senate 35–0.</em></p>
+      <p class="label">Why it matters</p>
+      <p>Extends the nation's most aggressive state preemption model.</p>
+    </div>
+    <div class="card">
+      <span class="lvl">State · Florida</span><span class="status st-intro">Introduced / in process</span>
+      <h3 style="margin-top:6px;"><a href="https://www.flsenate.gov/Session/Bill/2026/948" target="_blank" rel="noopener">SB 948 / HB 1143 — Florida Starter Homes Act</a></h3>
+      <p class="label">What it does</p>
+      <p>Would set statewide standards for smaller homes on smaller lots and allow up to four units per eligible lot.</p>
+      <p class="label">Why it matters</p>
+      <p>Targets the missing starter-home segment directly.</p>
+    </div>
+    <div class="card">
+      <span class="lvl">State · Washington</span><span class="status st-enacted">Enacted (2025)</span>
+      <h3 style="margin-top:6px;"><a href="https://app.leg.wa.gov/billsummary?BillNumber=1491&Year=2025" target="_blank" rel="noopener">HB 1491 — Transit-Oriented Development</a></h3>
+      <p class="label">What it does</p>
+      <p>Requires denser housing by right near major transit stops statewide.</p>
+      <p class="label">Why it matters</p>
+      <p>One of the strongest state TOD mandates — a template other states are copying.</p>
+    </div>
+    <div class="card">
+      <span class="lvl">State · Montana</span><span class="status st-enacted">Enacted 2023 · upheld Mar 2026</span>
+      <h3 style="margin-top:6px;"><a href="https://statecourtreport.org/our-work/analysis-opinion/montanas-housing-crisis-fix-survives-constitutional-challenge" target="_blank" rel="noopener">SB 382 — Land Use Planning Act ("Montana Miracle")</a></h3>
+      <p class="label">What it does</p>
+      <p>Overhauled local planning and zoning to require more housing types. <em>Status update: the Montana Supreme Court upheld it in March 2026.</em></p>
+      <p class="label">Why it matters</p>
+      <p>The court win removes the biggest legal cloud over the most-copied state reform model.</p>
+    </div>
+  </div>
+
+  <p class="theme">Local</p>
+  <div class="leg">
+    <div class="card">
+      <span class="lvl">Local · Seattle, WA</span><span class="status st-proposal">Proposal (2026)</span>
+      <h3 style="margin-top:6px;"><a href="https://www.planetizen.com/news/2026/05/137664-seattle-upzoning-proposal-seeks-boost-density-support-eco-friendly-building" target="_blank" rel="noopener">One Seattle Comprehensive Plan — citywide upzoning</a></h3>
+      <p class="label">What it does</p>
+      <p>Proposes citywide upzoning tied to incentives for eco-friendly building materials.</p>
+      <p class="label">Why it matters</p>
+      <p>A major city translating state mandates into concrete local density increases.</p>
+    </div>
+  </div>
+
+  <!-- RIGHT TO BUILD ZONES -->
+  <h2 class="section alt" id="rbz"><span class="eyebrow">Design inputs for your research</span>Right to Build Zones</h2>
+  <p class="note" style="margin-bottom:12px;">This section is not a literature scan and deliberately excludes EIG's and Agglomerations' own writing — you write that. Below: the open design questions I think matter most, then non-EIG sources mapped to each.</p>
+
+  <div class="qbox">
+    <h4>Open design questions worth resolving</h4>
+    <ol>
+      <li><strong>Boundaries &amp; eligibility:</strong> How are zones drawn and which parcels qualify? Tying eligibility to unbuilt zoned capacity vs. demand changes where zones actually produce.</li>
+      <li><strong>The by-right mechanism:</strong> What statutory language makes approval genuinely ministerial (non-discretionary), and how do you stop discretionary "poison pills" from creeping back in?</li>
+      <li><strong>Environmental review:</strong> How does by-right approval interact with NEPA/CEQA-style review — does the zone need a categorical exemption to deliver real certainty?</li>
+      <li><strong>Legal authority &amp; preemption:</strong> Land use is a state/local police power; what is the constitutional footing for a federal role (spending-power incentives vs. mandates), and will state preemption survive court challenge?</li>
+      <li><strong>Infrastructure &amp; financing:</strong> Who funds the roads, water, and schools new density needs — and can value capture / land value taxation pay for it without taxing the buildings you want?</li>
+      <li><strong>Measuring price, supply &amp; displacement:</strong> What's the credible identification strategy to show a zone caused more supply (and what it did to rents and incumbents)?</li>
+      <li><strong>Political economy:</strong> Why do citywide reforms stall, and does an opt-in, results-rewarded design actually defuse local opposition — or just relocate it?</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h3><a href="https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=201720180SB35" target="_blank" rel="noopener">California SB 35 (and SB 423 making it permanent)</a></h3>
+    <p class="meta">California Legislature · 2017 / 2023</p>
+    <p><span class="why">Helps with Q2 (by-right mechanism):</span> The leading real-world model of legally binding ministerial "checklist" approval — the actual statutory language that makes approval non-discretionary, and the template a federal RTBZ would adapt.</p>
+  </div>
+  <div class="card">
+    <h3><a href="https://www.ceqadevelopments.com/2025/09/29/california-legislature-enacts-sb-79-expanding-housing-opportunities-near-public-transit-streamlining-transit-oriented-development-and-providing-for-an-sb-35-ministerial-approval-process-that-would-av/" target="_blank" rel="noopener">How SB 79 / SB 35 ministerial approval avoids CEQA review</a></h3>
+    <p class="meta">CEQA Developments (Allen Matkins) · Sep 2025</p>
+    <p><span class="why">Helps with Q3 (environmental review):</span> Explains precisely how ministerial approval sidesteps CEQA — the mechanism an RTBZ would need to handle NEPA/CEQA exposure and deliver genuine certainty.</p>
+  </div>
+  <div class="card">
+    <h3><a href="https://statecourtreport.org/our-work/analysis-opinion/montanas-housing-crisis-fix-survives-constitutional-challenge" target="_blank" rel="noopener">Montana's Housing Reform Survives Constitutional Challenge</a></h3>
+    <p class="meta">State Court Report · March 2026</p>
+    <p><span class="why">Helps with Q4 (legal authority &amp; preemption):</span> A live test of whether state preemption of local zoning holds up in court — directly informs the federalism and constitutional-authority questions an RTBZ raises.</p>
+  </div>
+  <div class="card">
+    <h3><a href="https://www.lincolninst.edu/publications/policy-focus-reports/assessing-theory-practice-land-value-taxation/" target="_blank" rel="noopener">Assessing the Theory and Practice of Land Value Taxation</a></h3>
+    <p class="meta">Lincoln Institute of Land Policy</p>
+    <p><span class="why">Helps with Q5 (infrastructure financing):</span> Foundational treatment of LVT and value capture — a candidate way to fund the infrastructure new density needs without taxing the structures you're trying to encourage.</p>
+  </div>
+  <div class="card">
+    <h3><a href="https://www.sciencedirect.com/science/article/abs/pii/S016604622500105X" target="_blank" rel="noopener">The Effect of Rezoning on Local Housing Supply and Demand: Evidence from NYC</a></h3>
+    <p class="meta">Regional Science and Urban Economics · 2026</p>
+    <p><span class="why">Helps with Q6 (measuring effects):</span> A worked identification strategy for isolating how rezoning changed supply, prices, and gentrification — a methodological template for evaluating an RTBZ.</p>
+  </div>
+  <div class="card">
+    <h3><a href="https://www.mercatus.org/research/policy-briefs/housing-reform-states-menu-options-2026" target="_blank" rel="noopener">Housing Reform in the States: A Menu of Options for 2026</a></h3>
+    <p class="meta">Mercatus Center</p>
+    <p><span class="why">Helps with Q7 (political economy) &amp; Q1 (eligibility):</span> Documents that legalization ≠ production (states legalized missing-middle housing but little got built) — the central risk an opt-in, results-rewarded zone is meant to overcome.</p>
+  </div>
+
+  <!-- HOUSING DATASETS -->
+  <h2 class="section alt" id="data"><span class="eyebrow">Data for your research</span>Housing Datasets</h2>
+  <div class="card">
+    <h3><a href="https://www.census.gov/construction/bps/" target="_blank" rel="noopener">Census Building Permits Survey (BPS)</a></h3>
+    <p class="meta">U.S. Census Bureau · ongoing (monthly &amp; annual) · official</p>
+    <p><span class="why">What's in it / why useful:</span> Residential building permits by jurisdiction — the canonical series for tracking new-construction supply and permitting trends nationally and locally.</p>
+  </div>
+  <div class="card">
+    <h3><a href="https://www.huduser.gov/portal/datasets/ahs.html" target="_blank" rel="noopener">American Housing Survey (AHS)</a></h3>
+    <p class="meta">U.S. Census Bureau / HUD · biennial · official</p>
+    <p><span class="why">What's in it / why useful:</span> Deep detail on the housing stock, costs, conditions, and tenure — the workhorse cross-section for affordability and housing-quality analysis.</p>
+  </div>
+  <div class="card">
+    <h3><a href="https://www.zoningatlas.org/" target="_blank" rel="noopener">National Zoning Atlas</a></h3>
+    <p class="meta">Cornell-led (Sara Bronin) · ongoing · <strong>niche / still expanding — vet coverage</strong></p>
+    <p><span class="why">What's in it / why useful:</span> 200+ regulatory characteristics per zoning district across ~3,000 jurisdictions — the best granular data on where by-right and multifamily housing is actually allowed. Coverage varies by state, so confirm completeness for any jurisdiction you rely on.</p>
+  </div>
+
+  <footer>
+    Housing Monitor · generated June 8, 2026 · self-contained file, no external dependencies.<br>
+    Right to Build Zones sourcing excludes EIG and Agglomerations by design. All items recorded in the running archive CSV; strict no-reuse applies from the next run onward.
+  </footer>
+
+</div>
+</body>
+</html>
